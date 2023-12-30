@@ -1,4 +1,4 @@
-# configured aws provider with proper credentials
+
 provider "aws" {
   region = "us-east-1"
   profile= "Bisi"
@@ -7,11 +7,11 @@ provider "aws" {
 # Create a remote backend for your terraform 
 terraform {
   backend "s3" {
-    bucket = "Bisco-docker-tfstate"
+    bucket = "bisi-docker-tfstate"
     dynamodb_table = "app-state"
     key    = "LockID"
     region = "us-east-1"
-    profile = "Bisco-realcloud"
+    profile = "Bisi"
   }
 }
 
@@ -128,3 +128,4 @@ resource "aws_instance" "ec2_instance1" {
 output "website_url" {
   value     = join ("", ["http://", aws_instance.ec2_instance1.public_dns, ":", "8080"])
 }
+
